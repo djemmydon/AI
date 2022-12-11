@@ -30,13 +30,13 @@ function Works() {
             <img src={Icon} alt="" />
           </a>
 
-          <a href="">
+          <a href="/">
             <img src={Icon2} alt="" />
           </a>
-          <a href="">
+          <a href="/">
             <img src={Icon3} alt="" />
           </a>
-          <a href="">
+          <a href="/">
             <img src={Icon4} alt="" />
           </a>
         </div>
