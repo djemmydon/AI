@@ -74,7 +74,7 @@ function StepperForm() {
   const handleClose = () => {
     navigate("/");
   };
- 
+
   return (
     <Body>
       {state.succeeded && (
@@ -83,7 +83,9 @@ function StepperForm() {
             <h1>Thank you !!</h1>
             <p>We will get back to you</p>
 
-            <button  onClick={handleClose} className="button">Go Home</button>
+            <button onClick={handleClose} className="button">
+              Go Home
+            </button>
           </div>
         </div>
       )}
@@ -104,11 +106,13 @@ function StepperForm() {
         {getStepContent(activeSteps)}
 
         <div className="button">
-
-          {activeSteps === 0 ? " "  : <button type="button" onClick={() => handlePrev()}>
-            Back
-          </button>}
-          
+          {activeSteps === 0 ? (
+            " "
+          ) : (
+            <button type="button" onClick={() => handlePrev()}>
+              Back
+            </button>
+          )}
 
           {activeSteps === 5 ? (
             <Button type="submit" disabled={state.submitting}>

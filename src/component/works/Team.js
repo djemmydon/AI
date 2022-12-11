@@ -5,6 +5,8 @@ import Image3 from "../Ima/pic1.jpeg";
 import Image4 from "../Ima/pic3.jpeg";
 import Image5 from "../Ima/pic4.jpeg";
 import Image6 from "../Ima/pic5.jpeg";
+import Image7 from "../Ima/pic11.jpeg";
+import Image8 from "../Ima/pic12.jpeg";
 import Icon from "../Ima/15.png";
 import styled from "styled-components";
 // import Image1 from "../Ima/pic2.jpg"
@@ -88,6 +90,19 @@ function Team() {
         </div>
         <div className="team_items">
           <div className="team_img">
+            <img src={Image8} alt="" />
+          </div>
+
+          <div className="team_text">
+            <h3>Johnson Kelly</h3>
+            <h4>Logistics Officer</h4>
+            <a href="mailto:johnson.kelly@giagpher.com">
+              <img src={Icon} alt="" />
+            </a>
+          </div>
+        </div>
+        <div className="team_items">
+          <div className="team_img">
             <img src={Image6} alt="" />
           </div>
 
@@ -95,6 +110,20 @@ function Team() {
             <h3>Stephanie Ricke</h3>
             <h4>Advertising Cheif Officer</h4>
             <a href="mailto:stephanie.ricke@giagpher.com">
+              <img src={Icon} alt="" />
+            </a>
+          </div>
+        </div>
+       
+        <div className="team_items">
+          <div className="team_img">
+            <img src={Image7} alt="" />
+          </div>
+
+          <div className="team_text">
+            <h3>Michaeal Diagneult</h3>
+            <h4>President</h4>
+            <a href="mailto:michael.diagneault@giagpher.com">
               <img src={Icon} alt="" />
             </a>
           </div>

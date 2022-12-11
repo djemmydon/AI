@@ -1,42 +1,47 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Logo from "./Ima/giapher.png";
+import Logo from "./Ima/logogo.png";
 import Hamburger from "hamburger-react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
   // const handleOpen = () =>{
   //   setOpen(!open)
   // }
-  ;
   return (
     <div>
       <Navb>
-        <div className="navbar_logo">
+        <Link to="/" className="navbar_logo">
           <img src={Logo} alt="" />
-        </div>
+        </Link>
 
         <div className={open ? "nav_section open" : "nav_section"}>
           <ul>
-            <li >
+            <li>
               {" "}
               <a href="#home">Home</a>{" "}
             </li>
-            <li >
+            <li>
               <a href="#about">About</a>{" "}
             </li>
-            <li >
+            <li>
               {" "}
               <a href="#team">Team</a>{" "}
             </li>
-            <li >
+            <li>
               {" "}
               <a href="#contact">Contact</a>{" "}
             </li>
           </ul>
         </div>
         <div className="hamburger">
-          <Hamburger toggled={open} toggle={setOpen} size={25} style={{paddingRight:"30px"}} />
+          <Hamburger
+            toggled={open}
+            toggle={setOpen}
+            size={25}
+            style={{ paddingRight: "30px" }}
+          />
         </div>
       </Navb>
     </div>
@@ -60,7 +65,6 @@ const Navb = styled.nav`
   -webkit-box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.75);
 
-
   .hamburger {
     display: none;
   }
@@ -74,13 +78,12 @@ const Navb = styled.nav`
 
     .hamburger {
       display: block;
-    padding: 0 10px;
-
+      padding: 0 10px;
     }
   }
 
   .navbar_logo {
-    height: 80px;
+    height: 90px;
 
     img {
       height: 100%;
@@ -133,21 +136,19 @@ const Navb = styled.nav`
       display: flex;
       align-items: center;
       flex-direction: column;
-      
+
       li {
         list-style: none;
         font-size: 2rem;
         transition: 0.2s;
 
-    
-
         a {
           text-decoration: none;
           color: black;
           transition: 0.3s;
-          &:hover{
-         color: red;
-        }
+          &:hover {
+            color: red;
+          }
         }
       }
     }
