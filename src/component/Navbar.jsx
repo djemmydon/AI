@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Logo from "./Ima/giapher.png";
+import Hamburger from "hamburger-react";
 
 function Navbar() {
+  const [open, setOpen] = useState(false);
   return (
     <div>
       <Navb>
@@ -10,14 +12,23 @@ function Navbar() {
           <img src={Logo} alt="" />
         </div>
 
-        <div className="nav_section">
+        <div className={open ? "nav_section open" : "nav_section"}>
           <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Services</li>
-            <li>Portfolio</li>
-            <li>Team</li>
+            <li>
+              {" "}
+              <a href="#home">Home</a>{" "}
+            </li>
+            <li>
+              <a href="#about">About</a>{" "}
+            </li>
+            <li>
+              {" "}
+              <a href="#team">Team</a>{" "}
+            </li>
           </ul>
+        </div>
+        <div className="hamburger">
+          <Hamburger toggled={open} toggle={setOpen} size={30} style={{paddingRight:"30px"}} />
         </div>
       </Navb>
     </div>
@@ -38,11 +49,21 @@ const Navb = styled.nav`
   background-color: white;
   flex-wrap: wrap;
 
+  .hamburger {
+    display: none;
+  }
   @media (max-width: 768px) {
-  height: 120px;
-  justify-content: space-evenly;
+    height: 120px;
+    justify-content: space-evenly;
+  }
+  @media (max-width: 668px) {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 5px;
 
-
+    .hamburger {
+      display: block;
+    }
   }
 
   .navbar_logo {
@@ -56,6 +77,12 @@ const Navb = styled.nav`
   .nav_section {
     padding-right: 10px;
 
+    @media (max-width: 668px) {
+      display: none;
+      transform: scaleX(-0);
+      transition: 0.3s;
+    }
+
     ul {
       display: flex;
       align-items: center;
@@ -65,6 +92,50 @@ const Navb = styled.nav`
       li {
         list-style: none;
         font-size: 1rem;
+
+        a {
+          text-decoration: none;
+          color: black;
+        }
+      }
+    }
+  }
+
+  .nav_section.open {
+    display: block;
+    transform: scaleX(1);
+    transition: 0.3s;
+    position: absolute;
+    top: 5rem;
+    right: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: white;
+    padding-top: 2rem;
+
+    display: flex;
+    justify-items: center;
+
+    ul {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      
+      li {
+        list-style: none;
+        font-size: 2rem;
+        transition: 0.2s;
+
+    
+
+        a {
+          text-decoration: none;
+          color: black;
+          transition: 0.3s;
+          &:hover{
+         color: red;
+        }
+        }
       }
     }
   }
