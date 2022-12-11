@@ -13,7 +13,7 @@ import styled from "styled-components";
 
 function Team() {
   return (
-    <Body>
+    <Body id="team">
       <div className="content">
         <h1>Our Team </h1>
       </div>
@@ -110,10 +110,9 @@ const Body = styled.div`
   height: 100%;
   margin: 0 auto;
 
-  .content{
+  .content {
     text-align: center;
     color: #f34242;
-
   }
 
   .team_container {

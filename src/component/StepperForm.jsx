@@ -1,15 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from "@formspree/react";
-import {
-  Stepper,
-  Step,
-  StepLabel,
-  Button,
-} from "@mui/material";
+import { Stepper, Step, StepLabel, Button } from "@mui/material";
 import styled from "styled-components";
 import { Form1, Form2, Form3, Form4, Form5, Form6 } from "./Form";
 import { data } from "./data";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function getStep() {
   return [
@@ -25,7 +20,7 @@ function getStep() {
 function StepperForm() {
   const [activeSteps, setActiveStep] = useState(0);
   const [userInfo, setUserInfo] = useState(data);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,7 +29,7 @@ function StepperForm() {
   };
 
   const [state, sendToFormspree] = useForm("xeqdypww");
-  
+
   const steps = getStep();
 
   const handleNext = () => {
@@ -76,46 +71,56 @@ function StepperForm() {
     sendToFormspree(userInfo);
   };
 
-  if (state.succeeded) {
-    navigate("/")
-}
+  const handleClose = () => {
+    navigate("/");
+  };
+ 
   return (
     <Body>
-      {activeSteps === steps.length ? (
-        <h1>Congratulation</h1>
-      ) : (
-        <Form onSubmit={submitNow}>
-          <Stepper alternativeLabel activeStep={activeSteps}>
-            {steps.map((step, index) => {
-              const labelProps = {};
-              //   const stepProps = {};
+      {state.succeeded && (
+        <div className="thanks">
+          <div>
+            <h1>Thank you !!</h1>
+            <p>We will get back to you</p>
 
-              return (
-                <Step {...labelProps} key={index}>
-                  <StepLabel {...labelProps}>{step}</StepLabel>
-                </Step>
-              );
-            })}
-          </Stepper>
-          {getStepContent(activeSteps)}
-
-          <div className="button">
-            <button type="button" onClick={() => handlePrev()}>
-              Back
-            </button>
-
-            {activeSteps === 5 ? (
-              <Button type="submit" disabled={state.submitting}>
-                Submit
-              </Button>
-            ) : (
-              <button type="button" onClick={() => handleNext()}>
-                Next
-              </button>
-            )}
+            <button  onClick={handleClose} className="button">Go Home</button>
           </div>
-        </Form>
+        </div>
       )}
+
+      <Form onSubmit={submitNow}>
+        <Stepper alternativeLabel activeStep={activeSteps}>
+          {steps.map((step, index) => {
+            const labelProps = {};
+            //   const stepProps = {};
+
+            return (
+              <Step {...labelProps} key={index}>
+                <StepLabel {...labelProps}>{step}</StepLabel>
+              </Step>
+            );
+          })}
+        </Stepper>
+        {getStepContent(activeSteps)}
+
+        <div className="button">
+
+          {activeSteps === 0 ? " "  : <button type="button" onClick={() => handlePrev()}>
+            Back
+          </button>}
+          
+
+          {activeSteps === 5 ? (
+            <Button type="submit" disabled={state.submitting}>
+              Submit
+            </Button>
+          ) : (
+            <button type="button" onClick={() => handleNext()}>
+              Next
+            </button>
+          )}
+        </div>
+      </Form>
     </Body>
   );
 }
@@ -130,15 +135,66 @@ const Body = styled.div`
   align-items: center;
   justify-content: center;
   transition: 1s;
-  
+  position: relative;
 
   font-family: "Montserrat", sans-serif !important;
 
   @media screen and (max-width: 868px) {
     width: 100%;
 
-  padding:20rem 0;
+    padding: 20rem 0;
+  }
 
+  .thanks {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 10rem;
+    z-index: 100;
+    background: #312e2e47;
+    position: fixed;
+
+    color: white;
+
+    div {
+      width: 300px;
+      height: 200px;
+      text-align: center;
+      background: #312e2e47;
+      background: #f34242;
+      border-radius: 10px;
+      padding-top: 4rem;
+
+      h1 {
+        padding: 10px 0;
+        margin: 0;
+      }
+
+      p {
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    button {
+      padding: 7px 20px;
+      outline: none;
+      border: none;
+      background: #ffffff;
+      color: #ff0000;
+      border-radius: 10px;
+      transition: all 0.5s;
+
+      margin-top: 3px;
+      &:hover {
+        color: #f34242;
+        background: #e7e1e1;
+      }
+    }
   }
 `;
 
@@ -146,17 +202,22 @@ const Form = styled.form`
   width: 800px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0px 2px 5px -1px rgba(0,0,0,0.75);
--webkit-box-shadow: 0px 2px 5px -1px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 2px 5px -1px rgba(0,0,0,0.75);
+  box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.75);
 
   padding: 15px 10px;
   font-family: "Montserrat", sans-serif !important;
 
   @media screen and (max-width: 868px) {
     width: 100%;
+  }
+  @media screen and (max-width: 568px) {
+    width: 100%;
+    margin: 0 auto;
   }
 
   button {
@@ -181,10 +242,11 @@ const Form = styled.form`
     font-size: 0.8rem !important;
   }
 
-  .MuiStepper-horizontal{
+  .MuiStepper-horizontal {
     flex-wrap: wrap;
   }
   .button {
+    width: 100%;
     display: flex;
     justify-content: space-between;
   }
@@ -202,7 +264,7 @@ const Form = styled.form`
       align-items: flex-start;
       justify-content: start;
       gap: 5px;
-      width: 100%;
+      max-width: 100%;
     }
     @media screen and (max-width: 568px) {
       align-items: center;
@@ -232,12 +294,15 @@ const Form = styled.form`
         @media screen and (max-width: 568px) {
           width: 400px;
         }
+        @media screen and (max-width: 468px) {
+          width: 300px;
+        }
       }
     }
 
     .txt {
       flex-direction: column;
-      width: 100%;
+      max-width: 100%;
       padding: 0 2.8rem;
 
       @media screen and (max-width: 568px) {
@@ -256,6 +321,10 @@ const Form = styled.form`
 
         @media screen and (max-width: 568px) {
           width: 400px;
+        }
+
+        @media screen and (max-width: 468px) {
+          width: 300px;
         }
       }
     }
@@ -280,6 +349,10 @@ const Form = styled.form`
 
         @media screen and (max-width: 568px) {
           width: 430px;
+        }
+
+        @media screen and (max-width: 468px) {
+          width: 300px;
         }
       }
 

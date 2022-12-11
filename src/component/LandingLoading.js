@@ -9,7 +9,7 @@ function LandingLoading() {
       <div className="text_loading active" id="home">
         <div className="text">
           <p className="parag">
-            Welcome to <span>GIAPHER</span>{" "}
+            Welcome to <span>GIAGPHER</span>{" "}
           </p>
 
           <h1>WE'RE ADVERTISING AGENCY</h1>

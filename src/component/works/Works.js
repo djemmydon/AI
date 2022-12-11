@@ -14,7 +14,7 @@ function Works() {
         <With/>
         <Team/>
 
-        <div className="contact">
+        <div className="contact" id="contact">
         <div className="content">
         <h1>Contact Us </h1>
       </div>
@@ -24,6 +24,10 @@ function Works() {
       <a href="mailto:payroll@giagpher.com">payroll@giagpher.com</a>
       </div>
           
+        </div>
+
+        <div className="container_address">
+          <p><span>Address:</span> Add this address too, 1452 Mercury Ct, Milpitas California 95035</p>
         </div>
     </Bodies>
   )
@@ -72,6 +76,21 @@ const Bodies = styled.div`
   /* padding: 1rem; */
   margin-right: 0 0rem;
     
+  }
+
+  .container_address{
+    width: 100%;
+    height: 30px;
+    background: #f34242;
+    text-align: center;
+    margin-top: 3rem;
+    color: white;
+    padding: 10px 0;
+    font-size: 0.8rem;
+
+    span{
+      font-weight: 700;
+    }
   }
 
 `;

@@ -5,6 +5,10 @@ import Hamburger from "hamburger-react";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
+  // const handleOpen = () =>{
+  //   setOpen(!open)
+  // }
+  ;
   return (
     <div>
       <Navb>
@@ -14,21 +18,25 @@ function Navbar() {
 
         <div className={open ? "nav_section open" : "nav_section"}>
           <ul>
-            <li>
+            <li >
               {" "}
               <a href="#home">Home</a>{" "}
             </li>
-            <li>
+            <li >
               <a href="#about">About</a>{" "}
             </li>
-            <li>
+            <li >
               {" "}
               <a href="#team">Team</a>{" "}
+            </li>
+            <li >
+              {" "}
+              <a href="#contact">Contact</a>{" "}
             </li>
           </ul>
         </div>
         <div className="hamburger">
-          <Hamburger toggled={open} toggle={setOpen} size={30} style={{paddingRight:"30px"}} />
+          <Hamburger toggled={open} toggle={setOpen} size={25} style={{paddingRight:"30px"}} />
         </div>
       </Navb>
     </div>
@@ -48,21 +56,26 @@ const Navb = styled.nav`
   color: black;
   background-color: white;
   flex-wrap: wrap;
+  box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.75);
+
 
   .hamburger {
     display: none;
   }
   @media (max-width: 768px) {
-    height: 120px;
+    height: 70px;
     justify-content: space-evenly;
   }
   @media (max-width: 668px) {
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 0 5px;
 
     .hamburger {
       display: block;
+    padding: 0 10px;
+
     }
   }
 
