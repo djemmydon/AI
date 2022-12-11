@@ -20,11 +20,9 @@ function Works() {
 
       <div className="contact" id="contact"></div>
       <div className="content">
-          <h1>Contact Us </h1>
-        </div>
+        <h1>Contact Us </h1>
+      </div>
       <div className="container_address">
-      
-
         <div>
           <a href="mailto:finance@giagpher.com">
             <img src={Icon} alt="" />
@@ -40,9 +38,7 @@ function Works() {
             <img src={Icon4} alt="" />
           </a>
         </div>
-        <p>
-          <span>Address:</span> 1452 Mercury Ct, Milpitas California 95035
-        </p>
+        <p>1452 Mercury Ct, Milpitas California 95035</p>
       </div>
     </Bodies>
   );

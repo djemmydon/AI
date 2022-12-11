@@ -1,6 +1,3 @@
-
-
-
 export function Form1({ userInfo, handleChange }) {
   console.log(userInfo);
 
@@ -95,7 +92,7 @@ export function Form1({ userInfo, handleChange }) {
             name="phone"
             placeholder="
        Phone Number"
-            value={userInfo.city}
+            value={userInfo.phone}
             onChange={handleChange}
           />
         </div>
